@@ -20,6 +20,7 @@
 import os
 from os import listdir
 
+
 # TODO 2: Define get_pet_labels function below please be certain to replace None
 #       in the return statement with results_dic dictionary that you create 
 #       with this function
@@ -46,14 +47,13 @@ def get_pet_labels(image_dir):
     results_dic = dict()
     files = listdir(image_dir)
     files = [file for file in files if os.path.isfile(os.path.join(image_dir, file))]
-    
+
     for file in files:
         if file not in results_dic and file.lower().endswith(".jpg") and not file.startswith("."):
             label = " ".join((((file.split("."))[0]).split("_")[:-1])).lower()
             results_dic[file] = [label]
-            print (results_dic) 
+            print(results_dic)
         else:
             print("** Warning: Duplicate files exist in directory:", file)
-                
-        
+
     return results_dic
